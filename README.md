@@ -1,7 +1,7 @@
 # sac2020
 Códigos do Contiki para a simulação do SAC 2020
 
-#### TO-DO LIST (última atualização: 05/09/2019 00:20):
+#### TO-DO LIST (última atualização: 05/09/2019 11:21):
 
 - [x] Montar simulação com nós sensores, 1 nó fusor e 1 nó sink
 - [ ] Definir um arquivo de constantes com as constantes pertinentes às mensagens
