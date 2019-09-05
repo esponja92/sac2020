@@ -59,7 +59,7 @@
 static struct uip_udp_conn *server_conn;
 static int media = 0;
 
-static struct simple_udp_connection unicast_connection;
+static struct simple_udp_connection connection;
 
 static uip_ipaddr_t *addr;
 
@@ -109,22 +109,32 @@ tcpip_handler(void)
         total = total + scores[i];
     }
 
-    addr = servreg_hack_lookup(SERVICE_ID);
-    if(addr != NULL) {
+    uip_ipaddr_t addr_bc;
+
+    printf("Sending broadcast\n");
+    uip_create_linklocal_allnodes_mcast(&addr_bc);
+    simple_udp_sendto(&connection, "CONSEGUI", 10, &addr_bc);
+
+//    addr = servreg_hack_lookup(SERVICE_ID);
+/*
+    if(0) {
       if(total >= 7){
           static unsigned int message_number;
           char buf[20];
 
-          printf("Sending unicast to ");
-          uip_debug_ipaddr_print(addr);
-          printf("\n");
-          sprintf(buf, "%d", total);
-          message_number++;
-          simple_udp_sendto(&unicast_connection, buf, strlen(buf) + 1, addr);
+          //printf("Sending unicast to ");
+          //uip_debug_ipaddr_print(addr);
+          //printf("\n");
+          //sprintf(buf, "%d", total);
+          //message_number++;
+
+          //simple_udp_sendto(&connection, buf, strlen(buf) + 1, addr);
+
       }
     } else {
       printf("Service %d not found\n", SERVICE_ID);
     }
+*/
 
 #if SERVER_REPLY
     PRINTF("DATA sending reply\n");
@@ -223,7 +233,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
   PRINTF(" local/remote port %u/%u\n", UIP_HTONS(server_conn->lport),
          UIP_HTONS(server_conn->rport));
 
-  simple_udp_register(&unicast_connection, UDP_PORT,
+  simple_udp_register(&connection, UDP_PORT,
                       NULL, UDP_PORT, receiver);
 
   while(1) {

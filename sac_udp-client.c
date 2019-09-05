@@ -30,13 +30,15 @@
 #include "contiki.h"
 #include "lib/random.h"
 #include "sys/ctimer.h"
+#include "sys/etimer.h"
 #include "net/ip/uip.h"
 #include "net/ipv6/uip-ds6.h"
 #include "net/ip/uip-udp-packet.h"
-#include "sys/ctimer.h"
+
 #ifdef WITH_COMPOWER
 #include "powertrace.h"
 #endif
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -49,6 +51,11 @@
 #define DEBUG DEBUG_PRINT
 #include "net/ip/uip-debug.h"
 
+#include "simple-udp.h"
+#include "servreg-hack.h"
+
+#include "net/rpl/rpl.h"
+
 #ifndef PERIOD
 #define PERIOD 60
 #endif
@@ -60,6 +67,11 @@
 
 #define tamanho_janela 30
 
+#define UDP_PORT 1234
+#define SERVICE_ID 190
+
+static struct simple_udp_connection unicast_connection;
+
 static struct uip_udp_conn *client_conn;
 static uip_ipaddr_t server_ipaddr;
 
@@ -68,7 +80,23 @@ static int ultima_leitura = 0;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
+//PROCESS(unicast_receiver_process, "Unicast receiver example process");
 AUTOSTART_PROCESSES(&udp_client_process);
+/*---------------------------------------------------------------------------*/
+static void
+receiver(struct simple_udp_connection *c,
+         const uip_ipaddr_t *sender_addr,
+         uint16_t sender_port,
+         const uip_ipaddr_t *receiver_addr,
+         uint16_t receiver_port,
+         const uint8_t *data,
+         uint16_t datalen)
+{
+
+  printf("EMERGÊNCIA! PONTUAÇÃO RECEBIDA!: ");
+  //uip_debug_ipaddr_print(sender_addr);
+  printf("'%s'\n", data);
+}
 /*---------------------------------------------------------------------------*/
 static void
 tcpip_handler(void)
@@ -160,7 +188,7 @@ send_packet(void *ptr)
 
   PRINTF("Novo elemento: %d\n", novo_elemento);
 
-    if(ultima_leitura == tamanho_janela){
+    if(tamanho_janela == ultima_leitura){
         PRINTF("Buffer cheio. Testando anomalia...\n");
         if(( novo_elemento >= 3 * sd )){
           PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%d'\n",
@@ -241,7 +269,16 @@ PROCESS_THREAD(udp_client_process, ev, data)
 
   PROCESS_PAUSE();
 
+  //uip_ipaddr_t *ipaddr;
+
+  //servreg_hack_init();
+
   set_global_address();
+
+  //servreg_hack_register(SERVICE_ID, ipaddr);
+
+  simple_udp_register(&unicast_connection, UDP_PORT,
+                      NULL, UDP_PORT, receiver);
   
   PRINTF("UDP client process started\n");
 
