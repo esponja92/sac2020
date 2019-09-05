@@ -46,7 +46,7 @@
 #define UDP_CLIENT_PORT 8765
 #define UDP_SERVER_PORT 5678
 
-#define UDP_EXAMPLE_ID  190
+#define UDP_EXAMPLE_ID 190
 
 #define DEBUG DEBUG_PRINT
 #include "net/ip/uip-debug.h"
@@ -70,7 +70,7 @@
 #define UDP_PORT 1234
 #define SERVICE_ID 190
 
-static struct simple_udp_connection unicast_connection;
+static struct simple_udp_connection broadcast_connection;
 
 static struct uip_udp_conn *client_conn;
 static uip_ipaddr_t server_ipaddr;
@@ -287,9 +287,6 @@ PROCESS_THREAD(udp_client_process, ev, data)
   set_global_address();
 
   //servreg_hack_register(SERVICE_ID, ipaddr);
-
-  simple_udp_register(&unicast_connection, UDP_PORT,
-                      NULL, UDP_PORT, receiver);
   
   PRINTF("UDP client process started\n");
 
@@ -307,6 +304,9 @@ PROCESS_THREAD(udp_client_process, ev, data)
   PRINT6ADDR(&client_conn->ripaddr);
   PRINTF(" local/remote port %u/%u\n",
 	UIP_HTONS(client_conn->lport), UIP_HTONS(client_conn->rport));
+
+  simple_udp_register(&broadcast_connection, UDP_PORT,
+                      NULL, UDP_PORT, receiver);
 
 #if WITH_COMPOWER
   powertrace_sniff(POWERTRACE_ON);
