@@ -93,9 +93,20 @@ receiver(struct simple_udp_connection *c,
          uint16_t datalen)
 {
 
-  printf("EMERGÊNCIA! PONTUAÇÃO RECEBIDA!: ");
+  char buf[MAX_PAYLOAD_LEN];
+
+  int leitura_mais_recente;
+
+  leitura_mais_recente = -1;
+  //leitura_mais_recente = leituras[ultima_leitura]
+
+  printf("EMERGÊNCIA! ENVIANDO LEITURA MAIS RECENTE: %d\n", leitura_mais_recente);
   //uip_debug_ipaddr_print(sender_addr);
-  printf("'%s'\n", data);
+  //printf("'%s'\n", data);
+
+  sprintf(buf, "%d", leitura_mais_recente);
+  uip_udp_packet_sendto(client_conn, buf, strlen(buf), &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+
 }
 /*---------------------------------------------------------------------------*/
 static void

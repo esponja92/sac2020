@@ -113,7 +113,7 @@ tcpip_handler(void)
 
     printf("Sending broadcast\n");
     uip_create_linklocal_allnodes_mcast(&addr_bc);
-    simple_udp_sendto(&connection, "CONSEGUI", 10, &addr_bc);
+    simple_udp_sendto(&connection, "EMERGENCIA", 10, &addr_bc);
 
 //    addr = servreg_hack_lookup(SERVICE_ID);
 /*
