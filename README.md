@@ -1,7 +1,7 @@
 # sac2020
 Códigos do Contiki para a simulação do SAC 2020
 
-#### TO-DO LIST:
+#### TO-DO LIST (última atualização: 05/09/2019 00:20):
 
 - [x] Montar simulação com nós sensores, 1 nó fusor e 1 nó sink
 - [x] Se o nó sensor coletar uma medida maior do que 3 desvios padrões das últimas 30 medidas, enviar um ping para o nó fusor
