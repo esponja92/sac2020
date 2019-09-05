@@ -12,4 +12,4 @@ Códigos do Contiki para a simulação do SAC 2020
 - [ ] O nó sensor deve responder com o seu respectivo EWS
   - [ ] Incluir dados reais da base do MIMIC usando uma constante em um arquivo .h
 - [ ] O nó fusor deve aguardar todos os envios antes de somar os scores e realizar a decisão
-  - [ ] E se a quantidade de nós sensores for menor do que o nó fusor tinha calculado? Será necessário uma atualização constante dessa informação no nó sensor?
+  - [ ] E se a quantidade de nós sensores for menor do que o nó fusor tinha calculado? Será necessário uma atualização constante dessa informação no nó fusor?
