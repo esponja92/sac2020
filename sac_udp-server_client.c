@@ -100,26 +100,48 @@ static void alerta_emergencia(mensagem *m){
 
 }
 /*---------------------------------------------------------------------------*/
+static void esvazia_buffer(){
+    int i;
+    for(i = 0; i < num_sensores; i++){
+        scores[i] = -1;
+    }
+}
+/*---------------------------------------------------------------------------*/
+static int buffer_cheio(){
+    int i;
+    for(i = 0; i < num_sensores; i++){
+        if(scores[i] == -1){
+            return 0;
+        }
+    }
+
+    return 1;
+}
+/*---------------------------------------------------------------------------*/
 static void calcula_score(mensagem *m){
     int i = 0;
     while(scores[i] != -1){
-        PRINTF(" i = %d\n",i);
+        //PRINTF(" i = %d\n",i);
         i++;
     }
 
     if(i < num_sensores){
         scores[i] = m->valor;
+        int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1];
+        //PRINTF("ARMAZENADO O SCORE ENVIADO PELO SENSOR %d\n",indice);
     }
+
     //buffer cheio, soma e decide
-    else{
+    if(buffer_cheio()){
         total = 0;
         for(i = 0; i < num_sensores; i++){
-            PRINTF(" scores[%d] = %d\n",i,scores[i]);
+            //PRINTF(" scores[%d] = %d\n",i,scores[i]);
             total = total + scores[i];
         }
 
         PRINTF("Score total: %d\n", total);
         suspeita_em_andamento = 0;
+        esvazia_buffer();
     }
 }
 /*---------------------------------------------------------------------------*/
@@ -261,12 +283,12 @@ PROCESS_THREAD(udp_server_process, ev, data)
         mensagem *m = (struct _mensagem *)uip_appdata;
 
         if((strcmp(m->label,"suspeita") == 0) && (!suspeita_em_andamento)){
-          PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
+          //PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
           alerta_emergencia(m);
         }
 
         if(strcmp(m->label,"ews") == 0){
-          PRINTF("REDIRECIONANDO PARA O CALCULO DE SCORE!\n");
+          //PRINTF("REDIRECIONANDO PARA O CALCULO DE SCORE!\n");
           calcula_score(m);
         }
       }
