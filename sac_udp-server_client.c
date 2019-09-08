@@ -46,6 +46,8 @@
 #define DEBUG DEBUG_PRINT
 #include "net/ip/uip-debug.h"
 
+#include "consts.h"
+
 #define UIP_IP_BUF   ((struct uip_ip_hdr *)&uip_buf[UIP_LLH_LEN])
 
 #define UDP_CLIENT_PORT	8765
@@ -87,12 +89,14 @@ tcpip_handler(void)
   char *appdata;
 
   if(uip_newdata()) {
-    appdata = (char *)uip_appdata;
-    appdata[uip_datalen()] = 0;
-    PRINTF("DATA recv '%s' from ", appdata);
+    // appdata = (char *)uip_appdata;
+    // appdata[uip_datalen()] = 0;
+    mensagem *m = (struct _mensagem *)uip_appdata;
+    PRINTF("DATA recv '%d'\n", m->valor);
+    PRINTF("DATA recv '%s' from ", m->label);
 
-    int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1] - 1;
-    PRINTF("%d\n",indice);    
+    int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1];
+    PRINTF("%d\n",indice);
 
     scores[indice] = atoi(appdata);
 
@@ -189,7 +193,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
  * (Setting Context 0 to aaaa::1111:2222:3333:4444 will report a 16 bit compressed address of aaaa::1111:22ff:fe33:xxxx)
  * Note Wireshark's IPCMV6 checksum verification depends on the correct uncompressed addresses.
  */
- 
+
 #if 0
 /* Mode 1 - 64 bits inline */
    uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 1);
@@ -214,10 +218,10 @@ PROCESS_THREAD(udp_server_process, ev, data)
     PRINTF("failed to create a new RPL DAG\n");
   }
 #endif /* UIP_CONF_ROUTER */
-  
+
   print_local_addresses();
 
-  /* The data sink runs with a 100% duty cycle in order to ensure high 
+  /* The data sink runs with a 100% duty cycle in order to ensure high
      packet reception rates. */
   NETSTACK_MAC.off(1);
 

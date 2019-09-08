@@ -56,6 +56,8 @@
 
 #include "net/rpl/rpl.h"
 
+#include "consts.h"
+
 #ifndef PERIOD
 #define PERIOD 60
 #endif
@@ -131,9 +133,9 @@ receiver(struct simple_udp_connection *c,
   printf("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_mais_recente);
   //uip_debug_ipaddr_print(sender_addr);
   //printf("'%s'\n", data);
-
-  sprintf(buf, "%d", ews);
-  uip_udp_packet_sendto(client_conn, buf, strlen(buf), &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+  //
+  // sprintf(buf, "%d", ews);
+  // uip_udp_packet_sendto(client_conn, buf, strlen(buf), &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
 
 }
 /*---------------------------------------------------------------------------*/
@@ -230,10 +232,17 @@ send_packet(void *ptr)
     if(tamanho_janela - 1 == ultima_leitura){
         PRINTF("Buffer cheio. Testando anomalia...\n");
         if(( novo_elemento >= 3 * sd )){
-          PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%d'\n",
-                 server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], novo_elemento);
-          sprintf(buf, "%d", novo_elemento);
-          uip_udp_packet_sendto(client_conn, buf, strlen(buf),
+
+          // sprintf(buf, "%d", novo_elemento);
+          mensagem *m = (mensagem *)uip_appdata;
+          strcpy(m->label,"suspeita");
+          m->valor = 10;
+
+          PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
+                 server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
+
+
+          uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
                                 &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
         }
     }
