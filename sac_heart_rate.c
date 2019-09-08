@@ -79,6 +79,7 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
+static int emergencia = 0;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
@@ -128,17 +129,16 @@ receiver(struct simple_udp_connection *c,
 
   static int leitura_mais_recente;
 
-  //leitura_mais_recente = -1;
   leitura_mais_recente = leituras[ultima_leitura];
 
   int ews = EWS();
 
   printf("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_mais_recente);
-  //uip_debug_ipaddr_print(sender_addr);
-  //printf("'%s'\n", data);
-
-  // sprintf(buf, "%d", ews);
-  // uip_udp_packet_sendto(client_conn, buf, strlen(buf), &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+  mensagem *m = (mensagem *)uip_appdata;
+  strcpy(m->label,"ews");
+  m->valor = ews;
+  uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
+        &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
 
 }
 /*---------------------------------------------------------------------------*/

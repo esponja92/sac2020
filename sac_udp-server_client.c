@@ -59,13 +59,16 @@
 #define UDP_PORT 1234
 
 static struct uip_udp_conn *server_conn;
-static int media = 0;
+static int total = 0;
+#define num_sensores 2
 
 static struct simple_udp_connection connection;
 
 static uip_ipaddr_t *addr;
 
-static int scores[10] = {0,0,0,0,0,0,0,0,0,0};
+static int scores[num_sensores];
+
+static int suspeita_em_andamento = 0;
 
 PROCESS(udp_server_process, "UDP server process");
 AUTOSTART_PROCESSES(&udp_server_process);
@@ -83,42 +86,48 @@ receiver(struct simple_udp_connection *c,
          receiver_port, sender_port, datalen);
 }
 /*---------------------------------------------------------------------------*/
-static void
-tcpip_handler(void)
-{
-  char *appdata;
+static void alerta_emergencia(mensagem *m){
 
-  if(uip_newdata()) {
-    // appdata = (char *)uip_appdata;
-    // appdata[uip_datalen()] = 0;
-    mensagem *m = (struct _mensagem *)uip_appdata;
-    PRINTF("DATA recv '%d'\n", m->valor);
-    PRINTF("DATA recv '%s' from ", m->label);
+    //int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1];
 
-    int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1];
-    PRINTF("%d\n",indice);
-
-    scores[indice] = atoi(appdata);
-
-    //media = media + atoi(appdata);
-    //PRINTF("%d",
-    //       UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1]);
-    //PRINTF("\n");
-    //PRINTF("MEDIA : %d\n",media);
-
-    int total = 0;
-    int i;
-    for(i = 0; i < 10; i++){
-        //PRINTF("%d\n",scores[i]);
-        total = total + scores[i];
-    }
 
     uip_ipaddr_t addr_bc;
 
-    printf("Sending broadcast\n");
+    PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
+    suspeita_em_andamento = 1;
     uip_create_linklocal_allnodes_mcast(&addr_bc);
     simple_udp_sendto(&connection, "EMERGENCIA", 10, &addr_bc);
 
+}
+/*---------------------------------------------------------------------------*/
+static void calcula_score(mensagem *m){
+    int i = 0;
+    while(scores[i] != -1){
+        PRINTF(" i = %d\n",i);
+        i++;
+    }
+
+    if(i < num_sensores){
+        scores[i] = m->valor;
+    }
+    //buffer cheio, soma e decide
+    else{
+        total = 0;
+        for(i = 0; i < num_sensores; i++){
+            PRINTF(" scores[%d] = %d\n",i,scores[i]);
+            total = total + scores[i];
+        }
+
+        PRINTF("Score total: %d\n", total);
+        suspeita_em_andamento = 0;
+    }
+}
+/*---------------------------------------------------------------------------*/
+static void
+tcpip_handler(void)
+{
+
+// ROTINA PARA ENVIAR PARA O SINK!!!!!
 //    addr = servreg_hack_lookup(SERVICE_ID);
 /*
     if(0) {
@@ -138,7 +147,7 @@ tcpip_handler(void)
     } else {
       printf("Service %d not found\n", SERVICE_ID);
     }
-*/
+
 
 #if SERVER_REPLY
     PRINTF("DATA sending reply\n");
@@ -147,6 +156,7 @@ tcpip_handler(void)
     uip_create_unspecified(&server_conn->ripaddr);
 #endif
   }
+*/
 }
 /*---------------------------------------------------------------------------*/
 static void
@@ -182,7 +192,10 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
   PRINTF("UDP server started\n");
 
-
+  int i;
+  for(i = 0; i < num_sensores; i++){
+    scores[i] = -1;
+  }
 
 #if UIP_CONF_ROUTER
 /* The choice of server address determines its 6LoPAN header compression.
@@ -243,7 +256,21 @@ PROCESS_THREAD(udp_server_process, ev, data)
   while(1) {
     PROCESS_YIELD();
     if(ev == tcpip_event) {
-      tcpip_handler();
+      //tcpip_handler();
+      if(uip_newdata()) {
+        mensagem *m = (struct _mensagem *)uip_appdata;
+
+        if((strcmp(m->label,"suspeita") == 0) && (!suspeita_em_andamento)){
+          PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
+          alerta_emergencia(m);
+        }
+
+        if(strcmp(m->label,"ews") == 0){
+          PRINTF("REDIRECIONANDO PARA O CALCULO DE SCORE!\n");
+          calcula_score(m);
+        }
+      }
+
     } else if (ev == sensors_event && data == &button_sensor) {
       PRINTF("Initiaing global repair\n");
       rpl_repair_root(RPL_DEFAULT_INSTANCE);
