@@ -79,8 +79,9 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
+//static int emergencia = 0;
 
-static int leitura_bp = -1;
+static int leitura_spo2 = -1;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
@@ -88,31 +89,24 @@ PROCESS(udp_client_process, "UDP client process");
 AUTOSTART_PROCESSES(&udp_client_process);
 /*---------------------------------------------------------------------------*/
 static int EWS(void){
-
     static int dado;
 
     dado = leituras[ultima_leitura];
 
-    if(dado <= 90){
+    if(dado <= 91){
       return 3;
     }
 
-    if((91 <= dado) && (dado <= 100)){
+    if((92 <= dado) && (dado <= 93)){
       return 2;
     }
 
-    if((101 <= dado) && (dado <= 110)){
+    if((94 <= dado) && (dado <= 95)){
       return 1;
     }
 
-
-    if((111 <= dado) && (dado <= 219)){
-      return 0;
-    }
-
-    //dado >= 220
-
-    return 3;
+    //dado >= 96
+    return 0;
 }
 /*---------------------------------------------------------------------------*/
 static void
@@ -125,7 +119,7 @@ receiver(struct simple_udp_connection *c,
          uint16_t datalen)
 {
 
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int leitura_mais_recente;
 
@@ -192,19 +186,21 @@ static int sorteia(int num){
 }
 /*---------------------------------------------------------------------------*/
 static int coleta(){
-    //bpiration rate
-    //return 26 - sorteia(19);
-    leitura_bp++;
-    return bp[leitura_bp];
+    //heart rate
+    //return 132 - sorteia(93);
+
+    leitura_spo2++;
+    
+    return spo2[leitura_spo2];
 }
 /*---------------------------------------------------------------------------*/
 static void
 send_packet(void *ptr)
 {
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int i;
-  static int total = 0;
+
   static int media = 0;
   static int somatorio = 0;
   static int sd = 0;
@@ -241,7 +237,7 @@ send_packet(void *ptr)
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
-          m->valor = leitura_bp;
+          m->valor = leitura_spo2;
 
           PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
                  server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);

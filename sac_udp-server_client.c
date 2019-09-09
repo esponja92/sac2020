@@ -60,7 +60,7 @@
 
 static struct uip_udp_conn *server_conn;
 static int total = 0;
-#define num_sensores 2
+#define num_sensores 3
 
 static struct simple_udp_connection connection;
 
@@ -88,7 +88,7 @@ receiver(struct simple_udp_connection *c,
          receiver_port, sender_port, datalen);
 }
 /*---------------------------------------------------------------------------*/
-static void alerta_emergencia(mensagem *m){
+static void alerta_emergencia(){
 
     //int indice = (int) UIP_IP_BUF->srcipaddr.u8[sizeof(UIP_IP_BUF->srcipaddr.u8) - 1];
 
@@ -287,7 +287,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
         if((strcmp(m->label,"suspeita") == 0) && (!suspeita_em_andamento)){
           //PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
           leitura = m->valor;
-          alerta_emergencia(m);
+          alerta_emergencia();
         }
 
         if(strcmp(m->label,"ews") == 0){
@@ -297,8 +297,9 @@ PROCESS_THREAD(udp_server_process, ev, data)
       }
 
     } else if (ev == sensors_event && data == &button_sensor) {
-      PRINTF("Initiaing global repair\n");
-      rpl_repair_root(RPL_DEFAULT_INSTANCE);
+      //PRINTF("Initiaing global repair\n");
+      //rpl_repair_root(RPL_DEFAULT_INSTANCE);
+      alerta_emergencia();
     }
   }
 
