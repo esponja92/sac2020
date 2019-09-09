@@ -80,6 +80,8 @@ static uip_ipaddr_t server_ipaddr;
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
 
+static int leitura_resp = -1;
+
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
 //PROCESS(unicast_receiver_process, "Unicast receiver example process");
@@ -189,7 +191,9 @@ static int sorteia(int num){
 /*---------------------------------------------------------------------------*/
 static int coleta(){
     //respiration rate
-    return 26 - sorteia(19);
+    //return 26 - sorteia(19);
+    leitura_resp++;
+    return resp[leitura_resp];
 }
 /*---------------------------------------------------------------------------*/
 static void
@@ -235,7 +239,7 @@ send_packet(void *ptr)
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
-          m->valor = 10;
+          m->valor = leitura_resp;
 
           PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
                  server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);

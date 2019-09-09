@@ -79,6 +79,9 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
+//static int emergencia = 0;
+
+static int leitura_bp = -1;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
@@ -86,7 +89,7 @@ PROCESS(udp_client_process, "UDP client process");
 AUTOSTART_PROCESSES(&udp_client_process);
 /*---------------------------------------------------------------------------*/
 static int EWS(void){
-/*
+
     static int dado;
 
     dado = leituras[ultima_leitura];
@@ -109,7 +112,7 @@ static int EWS(void){
     }
 
     //dado >= 220
-*/
+
     return 3;
 }
 /*---------------------------------------------------------------------------*/
@@ -123,7 +126,7 @@ receiver(struct simple_udp_connection *c,
          uint16_t datalen)
 {
 
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int leitura_mais_recente;
 
@@ -190,14 +193,18 @@ static int sorteia(int num){
 }
 /*---------------------------------------------------------------------------*/
 static int coleta(){
-    //respiration rate
-    return 221;
+    //heart rate
+    //return 132 - sorteia(93);
+
+    leitura_bp++;
+    
+    return bp[leitura_bp];
 }
 /*---------------------------------------------------------------------------*/
 static void
 send_packet(void *ptr)
 {
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int i;
   static int total = 0;
@@ -237,7 +244,7 @@ send_packet(void *ptr)
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
-          m->valor = 10;
+          m->valor = leitura_bp;
 
           PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
                  server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);

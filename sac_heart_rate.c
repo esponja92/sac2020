@@ -79,7 +79,9 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
-static int emergencia = 0;
+//static int emergencia = 0;
+
+static int leitura_hr = -1;
 
 /*---------------------------------------------------------------------------*/
 PROCESS(udp_client_process, "UDP client process");
@@ -125,7 +127,7 @@ receiver(struct simple_udp_connection *c,
          uint16_t datalen)
 {
 
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int leitura_mais_recente;
 
@@ -193,13 +195,17 @@ static int sorteia(int num){
 /*---------------------------------------------------------------------------*/
 static int coleta(){
     //heart rate
-    return 132 - sorteia(93);
+    //return 132 - sorteia(93);
+
+    leitura_hr++;
+    
+    return hr[leitura_hr];
 }
 /*---------------------------------------------------------------------------*/
 static void
 send_packet(void *ptr)
 {
-  char buf[MAX_PAYLOAD_LEN];
+  //char buf[MAX_PAYLOAD_LEN];
 
   static int i;
   static int total = 0;
@@ -239,7 +245,7 @@ send_packet(void *ptr)
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
-          m->valor = 10;
+          m->valor = leitura_hr;
 
           PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
                  server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);

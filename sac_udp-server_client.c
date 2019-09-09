@@ -70,6 +70,8 @@ static int scores[num_sensores];
 
 static int suspeita_em_andamento = 0;
 
+static int leitura = -1;
+
 PROCESS(udp_server_process, "UDP server process");
 AUTOSTART_PROCESSES(&udp_server_process);
 /*----*/
@@ -93,7 +95,7 @@ static void alerta_emergencia(mensagem *m){
 
     uip_ipaddr_t addr_bc;
 
-    PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
+    //PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
     suspeita_em_andamento = 1;
     uip_create_linklocal_allnodes_mcast(&addr_bc);
     simple_udp_sendto(&connection, "EMERGENCIA", 10, &addr_bc);
@@ -139,7 +141,7 @@ static void calcula_score(mensagem *m){
             total = total + scores[i];
         }
 
-        PRINTF("Score total: %d\n", total);
+        PRINTF("Score total acionado no instante t = %d: %d\n", leitura, total);
         suspeita_em_andamento = 0;
         esvazia_buffer();
     }
@@ -284,6 +286,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
         if((strcmp(m->label,"suspeita") == 0) && (!suspeita_em_andamento)){
           //PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
+          leitura = m->valor;
           alerta_emergencia(m);
         }
 
