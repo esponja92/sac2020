@@ -135,7 +135,7 @@ receiver(struct simple_udp_connection *c,
 
     int ews = EWS();
 
-    printf("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, ultima_leitura);
+    PRINTF("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_resp);
     mensagem *m = (mensagem *)uip_appdata;
     strcpy(m->label,"ews");
     m->valor = ews;
@@ -144,9 +144,11 @@ receiver(struct simple_udp_connection *c,
   }
 
   else{
-    int ultima_leitura_fusor = atoi(str);
-    if(ultima_leitura_fusor > ultima_leitura){
-      ultima_leitura = ultima_leitura_fusor;
+    static int ultima_leitura_fusor;
+    ultima_leitura_fusor = atoi(str);
+    // PRINTF(" ======= %s\n",str);
+    if(ultima_leitura_fusor > leitura_resp){
+      leitura_resp = ultima_leitura_fusor;
     }
   }
 
@@ -201,12 +203,12 @@ static float powerto(float number){
     // return numero;
 // }
 /*---------------------------------------------------------------------------*/
-static int coleta(){
-    //respiration rate
-    //return 26 - sorteia(19);
-    leitura_resp = (leitura_resp + 1) % 400;
-    return resp[leitura_resp];
-}
+// static int coleta(){
+//     //respiration rate
+//     //return 26 - sorteia(19);
+//
+//     return resp[leitura_resp];
+// }
 /*---------------------------------------------------------------------------*/
 static void
 send_packet(void *ptr)
@@ -239,8 +241,8 @@ send_packet(void *ptr)
   if(ultima_leitura == tamanho_janela){
     //PRINTF("Janela cheia!");
   }
-
-  novo_elemento = coleta();
+  leitura_resp++;
+  novo_elemento = resp[leitura_resp];
 
   PRINTF("Novo elemento: %d\n", novo_elemento);
 

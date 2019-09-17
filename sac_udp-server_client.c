@@ -163,7 +163,7 @@ static void calcula_score(mensagem *m){
             total = total + scores[i];
         }
 
-        PRINTF("Score total acionado no instante t = %d: %d\n", leitura, total);
+        PRINTF("Score total acionado no instante t = %d: %d\n", internal_clock, total);
         if(total >= 7){
           aconteceu_emergencia = 1;
         }
@@ -241,7 +241,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
   uip_ipaddr_t ipaddr;
   struct uip_ds6_addr *root_if;
   static struct etimer periodic;
-  // static struct etimer myclock;
+  static struct etimer myclock;
 
   PROCESS_BEGIN();
 
@@ -250,7 +250,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
   SENSORS_ACTIVATE(button_sensor);
 
   //PRINTF("UDP server started\n");
-  printf("Ticks per second: %u\n", RTIMER_SECOND);
+  // printf("Ticks per second: %u\n", RTIMER_SECOND);
   // powertrace_start(CLOCK_SECOND * 60);
 
   int i;
@@ -314,7 +314,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
                       NULL, UDP_PORT, receiver);
 
   etimer_set(&periodic, periodo*CLOCK_SECOND);
-  // etimer_set(&myclock, 2*CLOCK_SECOND);
+  etimer_set(&myclock, CLOCK_SECOND);
 
   static int resposta = 0;
   while(1) {
@@ -326,7 +326,22 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
         if((strcmp(m->label,"suspeita") == 0) && (!suspeita_em_andamento)){
           //PRINTF("REDIRECIONANDO PARA O ALERTA DE EMERGENCIA!\n");
-          leitura = m->valor;
+          // if(internal_clock < m->valor){
+          //   leitura = m->valor;
+          //   internal_clock = leitura;
+          //   inicio = internal_clock;
+          //   fim = inicio + periodo;
+          // }
+          // else{
+          //
+          if(internal_clock != m->valor){
+            uip_ipaddr_t addr_bc;
+            char str[3];
+            sprintf(str, "%d", internal_clock);
+            uip_create_linklocal_allnodes_mcast(&addr_bc);
+            simple_udp_sendto(&connection, str, 3, &addr_bc);
+          }
+
           alerta_emergencia();
         }
 
@@ -341,17 +356,18 @@ PROCESS_THREAD(udp_server_process, ev, data)
       //rpl_repair_root(RPL_DEFAULT_INSTANCE);
       alerta_emergencia();
     }
-    // else if(etimer_expired(&myclock)) {
-    //   etimer_reset(&myclock);
-    //
-    //   internal_clock = internal_clock + 2;
-    //
-    // }
+    else if(etimer_expired(&myclock)) {
+      etimer_reset(&myclock);
+
+      internal_clock = internal_clock + 1;
+
+    }
     else if(etimer_expired(&periodic)) {
       etimer_reset(&periodic);
 
+      PRINTF("PROCURANDO NA JANELA ENTRE %d E %d\n",inicio,fim);
       int k;
-      for(k = inicio; k < fim; k++){
+      for(k = inicio; k <= fim; k++){
         if(EWS[k] >= 7){
           resposta = 1;
           PRINTF("ACHADO SCORE >= 7 NA LEITURA %d\n",k);
@@ -364,27 +380,29 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
       if(resposta == 1){
         if(aconteceu_emergencia){
-          PRINTF("TP\n");
+          // PRINTF("TP\n");
           TP++;
         }
         else{
-            PRINTF("FN\n");
+            // PRINTF("FN\n");
             FN++;
         }
       }
       else{
         if(aconteceu_emergencia){
-          PRINTF("FP\n");
+          // PRINTF("FP\n");
           FP++;
         }
         else{
-            PRINTF("TN\n");
+            // PRINTF("TN\n");
             TN++;
         }
       }
       aconteceu_emergencia = 0;
       resposta = 0;
       PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n",TP,TN,FP,FN);
+
+      internal_clock = inicio;
     }
   }
 
