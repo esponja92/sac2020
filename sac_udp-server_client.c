@@ -48,6 +48,8 @@
 
 #include "consts.h"
 
+// #include "powertrace.h"
+
 #define UIP_IP_BUF   ((struct uip_ip_hdr *)&uip_buf[UIP_LLH_LEN])
 
 #define UDP_CLIENT_PORT	8765
@@ -72,6 +74,21 @@ static int suspeita_em_andamento = 0;
 
 static int leitura = -1;
 
+static int internal_clock = 0;
+
+static int aconteceu_emergencia = 0;
+
+static int inicio = 0;
+
+static int periodo = 13;
+
+static int fim = 13;
+
+static int TP = 0;
+static int TN = 0;
+static int FP = 0;
+static int FN = 0;
+
 PROCESS(udp_server_process, "UDP server process");
 AUTOSTART_PROCESSES(&udp_server_process);
 /*----*/
@@ -84,9 +101,14 @@ receiver(struct simple_udp_connection *c,
          const uint8_t *data,
          uint16_t datalen)
 {
-  printf("Data received on port %d from port %d with length %d\n",
-         receiver_port, sender_port, datalen);
+  //printf("Data received on port %d from port %d with length %d\n",         receiver_port, sender_port, datalen);
 }
+/*---------------------------------------------------------------------------*/
+// static int procura_emergencia(){
+//
+//
+//   return resposta;
+// }
 /*---------------------------------------------------------------------------*/
 static void alerta_emergencia(){
 
@@ -142,8 +164,19 @@ static void calcula_score(mensagem *m){
         }
 
         PRINTF("Score total acionado no instante t = %d: %d\n", leitura, total);
+        if(total >= 7){
+          aconteceu_emergencia = 1;
+        }
         suspeita_em_andamento = 0;
         esvazia_buffer();
+
+        //faz broadcast com o valor de t
+        uip_ipaddr_t addr_bc;
+        uip_create_linklocal_allnodes_mcast(&addr_bc);
+
+        char str[3];
+        sprintf(str, "%d", internal_clock);
+        simple_udp_sendto(&connection, str, 3, &addr_bc);
     }
 }
 /*---------------------------------------------------------------------------*/
@@ -189,12 +222,12 @@ print_local_addresses(void)
   int i;
   uint8_t state;
 
-  PRINTF("Server IPv6 addresses: ");
+  //PRINTF("Server IPv6 addresses: ");
   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
     state = uip_ds6_if.addr_list[i].state;
     if(state == ADDR_TENTATIVE || state == ADDR_PREFERRED) {
-      PRINT6ADDR(&uip_ds6_if.addr_list[i].ipaddr);
-      PRINTF("\n");
+      //PRINT6ADDR(&uip_ds6_if.addr_list[i].ipaddr);
+      //PRINTF("\n");
       /* hack to make address "final" */
       if (state == ADDR_TENTATIVE) {
 	uip_ds6_if.addr_list[i].state = ADDR_PREFERRED;
@@ -207,6 +240,8 @@ PROCESS_THREAD(udp_server_process, ev, data)
 {
   uip_ipaddr_t ipaddr;
   struct uip_ds6_addr *root_if;
+  static struct etimer periodic;
+  static struct etimer myclock;
 
   PROCESS_BEGIN();
 
@@ -214,7 +249,9 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
   SENSORS_ACTIVATE(button_sensor);
 
-  PRINTF("UDP server started\n");
+  //PRINTF("UDP server started\n");
+  printf("Ticks per second: %u\n", RTIMER_SECOND);
+  // powertrace_start(CLOCK_SECOND * 60);
 
   int i;
   for(i = 0; i < num_sensores; i++){
@@ -250,9 +287,9 @@ PROCESS_THREAD(udp_server_process, ev, data)
     dag = rpl_set_root(RPL_DEFAULT_INSTANCE,(uip_ip6addr_t *)&ipaddr);
     uip_ip6addr(&ipaddr, 0xaaaa, 0, 0, 0, 0, 0, 0, 0);
     rpl_set_prefix(dag, &ipaddr, 64);
-    PRINTF("created a new RPL dag\n");
+    //PRINTF("created a new RPL dag\n");
   } else {
-    PRINTF("failed to create a new RPL DAG\n");
+    //PRINTF("failed to create a new RPL DAG\n");
   }
 #endif /* UIP_CONF_ROUTER */
 
@@ -264,19 +301,22 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
   server_conn = udp_new(NULL, UIP_HTONS(UDP_CLIENT_PORT), NULL);
   if(server_conn == NULL) {
-    PRINTF("No UDP connection available, exiting the process!\n");
+    //PRINTF("No UDP connection available, exiting the process!\n");
     PROCESS_EXIT();
   }
   udp_bind(server_conn, UIP_HTONS(UDP_SERVER_PORT));
 
-  PRINTF("Created a server connection with remote address ");
-  PRINT6ADDR(&server_conn->ripaddr);
-  PRINTF(" local/remote port %u/%u\n", UIP_HTONS(server_conn->lport),
-         UIP_HTONS(server_conn->rport));
+  //PRINTF("Created a server connection with remote address ");
+  //PRINT6ADDR(&server_conn->ripaddr);
+  //PRINTF(" local/remote port %u/%u\n", UIP_HTONS(server_conn->lport),          UIP_HTONS(server_conn->rport));
 
   simple_udp_register(&connection, UDP_PORT,
                       NULL, UDP_PORT, receiver);
 
+  etimer_set(&periodic, periodo*CLOCK_SECOND);
+  etimer_set(&myclock, 2*CLOCK_SECOND);
+
+  static int resposta = 0;
   while(1) {
     PROCESS_YIELD();
     if(ev == tcpip_event) {
@@ -300,6 +340,49 @@ PROCESS_THREAD(udp_server_process, ev, data)
       //PRINTF("Initiaing global repair\n");
       //rpl_repair_root(RPL_DEFAULT_INSTANCE);
       alerta_emergencia();
+    } else if(etimer_expired(&myclock)) {
+      etimer_reset(&myclock);
+
+      internal_clock = internal_clock + 2;
+
+    } else if(etimer_expired(&periodic)) {
+      etimer_reset(&periodic);
+
+      int k;
+      for(k = inicio; k < fim; k++){
+        if(EWS[k] >= 7){
+          resposta = 1;
+          PRINTF("ACHADO SCORE >= 7 NA LEITURA %d\n",k);
+          break;
+        }
+      }
+
+      inicio = inicio + periodo;
+      fim = fim + periodo;
+
+      if(resposta == 1){
+        if(aconteceu_emergencia){
+          PRINTF("TP\n");
+          TP++;
+        }
+        else{
+            PRINTF("FN\n");
+            FN++;
+        }
+      }
+      else{
+        if(aconteceu_emergencia){
+          PRINTF("FP\n");
+          FP++;
+        }
+        else{
+            PRINTF("TN\n");
+            TN++;
+        }
+      }
+      aconteceu_emergencia = 0;
+      resposta = 0;
+      PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n",TP,TN,FP,FN);
     }
   }
 

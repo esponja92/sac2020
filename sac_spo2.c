@@ -56,18 +56,18 @@
 
 #include "net/rpl/rpl.h"
 
-#include "consts.h"
+#include "constsspo2.h"
 
 #ifndef PERIOD
 #define PERIOD 60
 #endif
 
 #define START_INTERVAL		(15 * CLOCK_SECOND)
-#define SEND_INTERVAL		(PERIOD * CLOCK_SECOND)
+#define SEND_INTERVAL		(CLOCK_SECOND)
 #define SEND_TIME		(random_rand() % (SEND_INTERVAL))
 #define MAX_PAYLOAD_LEN		30
 
-#define tamanho_janela 10
+#define tamanho_janela 5
 
 #define UDP_PORT 1234
 #define SERVICE_ID 190
@@ -120,33 +120,45 @@ receiver(struct simple_udp_connection *c,
 {
 
   //char buf[MAX_PAYLOAD_LEN];
+  char *str;
+  str = data;
+  str[uip_datalen()] = '\0';
 
-  static int leitura_mais_recente;
+  if(!strcmp(str,"EMERGENCIA")){
+    static int leitura_mais_recente;
 
-  leitura_mais_recente = leituras[ultima_leitura];
+    leitura_mais_recente = leituras[ultima_leitura];
 
-  int ews = EWS();
+    int ews = EWS();
 
-  printf("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_mais_recente);
-  mensagem *m = (mensagem *)uip_appdata;
-  strcpy(m->label,"ews");
-  m->valor = ews;
-  uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
-        &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+    printf("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, ultima_leitura);
+    mensagem *m = (mensagem *)uip_appdata;
+    strcpy(m->label,"ews");
+    m->valor = ews;
+    uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
+          &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+  }
+
+  else{
+    int ultima_leitura_fusor = atoi(str);
+    if(ultima_leitura_fusor > ultima_leitura){
+      ultima_leitura = ultima_leitura_fusor;
+    }
+  }
 
 }
 /*---------------------------------------------------------------------------*/
-static void
-tcpip_handler(void)
-{
-  char *str;
-
-  if(uip_newdata()) {
-    str = uip_appdata;
-    str[uip_datalen()] = '\0';
-    printf("DATA recv '%s'\n", str);
-  }
-}
+// static void
+// tcpip_handler(void)
+// {
+  // char *str;
+  //
+  // if(uip_newdata()) {
+  //   str = uip_appdata;
+  //   str[uip_datalen()] = '\0';
+  //   printf("DATA recv '%s'\n", str);
+  // }
+// }
 /*---------------------------------------------------------------------------*/
 static void insere(int e){
     leituras[ultima_leitura] = e;
@@ -177,20 +189,20 @@ static float powerto(float number){
     return number*number;
 }
 /*---------------------------------------------------------------------------*/
-static int sorteia(int num){
-    int numero = rand() % num;
-    if(numero < 0){
-        numero = (-1) * numero;
-    }
-    return numero;
-}
+// static int sorteia(int num){
+//     int numero = rand() % num;
+//     if(numero < 0){
+//         numero = (-1) * numero;
+//     }
+//     return numero;
+// }
 /*---------------------------------------------------------------------------*/
 static int coleta(){
     //heart rate
     //return 132 - sorteia(93);
 
-    leitura_spo2++;
-    
+    leitura_spo2 = (leitura_spo2 + 1) % 400;
+
     return spo2[leitura_spo2];
 }
 /*---------------------------------------------------------------------------*/
@@ -221,17 +233,17 @@ send_packet(void *ptr)
 
   sd = sqrt(somatorio / i);
 
-  PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
-  if(ultima_leitura == tamanho_janela){
-    PRINTF("Janela cheia!");
-  }
+  // PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
+  // if(ultima_leitura == tamanho_janela){
+  //   PRINTF("Janela cheia!");
+  // }
 
   novo_elemento = coleta();
 
-  PRINTF("Novo elemento: %d\n", novo_elemento);
+  // PRINTF("Novo elemento: %d\n", novo_elemento);
 
     if(tamanho_janela - 1 == ultima_leitura){
-        PRINTF("Buffer cheio. Testando anomalia...\n");
+        // PRINTF("Buffer cheio. Testando anomalia...\n");
         if(( novo_elemento > media + 3 * sd ) || (novo_elemento < media - 3 * sd)){
 
           // sprintf(buf, "%d", novo_elemento);
@@ -239,8 +251,7 @@ send_packet(void *ptr)
           strcpy(m->label,"suspeita");
           m->valor = leitura_spo2;
 
-          PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n",
-                 server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
+          // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n", server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
 
 
           uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
@@ -259,13 +270,13 @@ print_local_addresses(void)
   int i;
   uint8_t state;
 
-  PRINTF("Client IPv6 addresses: ");
+  //PRINTF("Client IPv6 addresses: ");
   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
     state = uip_ds6_if.addr_list[i].state;
     if(uip_ds6_if.addr_list[i].isused &&
        (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
       PRINT6ADDR(&uip_ds6_if.addr_list[i].ipaddr);
-      PRINTF("\n");
+      //PRINTF("\n");
       /* hack to make address "final" */
       if (state == ADDR_TENTATIVE) {
 	uip_ds6_if.addr_list[i].state = ADDR_PREFERRED;
@@ -326,22 +337,21 @@ PROCESS_THREAD(udp_client_process, ev, data)
 
   //servreg_hack_register(SERVICE_ID, ipaddr);
 
-  PRINTF("UDP client process started\n");
+  //PRINTF("UDP client process started\n");
 
   print_local_addresses();
 
   /* new connection with remote host */
   client_conn = udp_new(NULL, UIP_HTONS(UDP_SERVER_PORT), NULL);
   if(client_conn == NULL) {
-    PRINTF("No UDP connection available, exiting the process!\n");
+    //PRINTF("No UDP connection available, exiting the process!\n");
     PROCESS_EXIT();
   }
   udp_bind(client_conn, UIP_HTONS(UDP_CLIENT_PORT));
 
-  PRINTF("Created a connection with the server ");
-  PRINT6ADDR(&client_conn->ripaddr);
-  PRINTF(" local/remote port %u/%u\n",
-	UIP_HTONS(client_conn->lport), UIP_HTONS(client_conn->rport));
+  //PRINTF("Created a connection with the server ");
+  //PRINT6ADDR(&client_conn->ripaddr);
+  //PRINTF(" local/remote port %u/%u\n", UIP_HTONS(client_conn->lport), UIP_HTONS(client_conn->rport));
 
   simple_udp_register(&broadcast_connection, UDP_PORT,
                       NULL, UDP_PORT, receiver);
@@ -354,7 +364,7 @@ PROCESS_THREAD(udp_client_process, ev, data)
   while(1) {
     PROCESS_YIELD();
     if(ev == tcpip_event) {
-      tcpip_handler();
+      // tcpip_handler();
     }
 
     if(etimer_expired(&periodic)) {
