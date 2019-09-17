@@ -170,13 +170,13 @@ static void calcula_score(mensagem *m){
         suspeita_em_andamento = 0;
         esvazia_buffer();
 
-        //faz broadcast com o valor de t
-        uip_ipaddr_t addr_bc;
-        uip_create_linklocal_allnodes_mcast(&addr_bc);
-
-        char str[3];
-        sprintf(str, "%d", internal_clock);
-        simple_udp_sendto(&connection, str, 3, &addr_bc);
+        // //faz broadcast com o valor de t
+        // uip_ipaddr_t addr_bc;
+        // uip_create_linklocal_allnodes_mcast(&addr_bc);
+        //
+        // char str[3];
+        // sprintf(str, "%d", internal_clock);
+        // simple_udp_sendto(&connection, str, 3, &addr_bc);
     }
 }
 /*---------------------------------------------------------------------------*/
@@ -241,7 +241,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
   uip_ipaddr_t ipaddr;
   struct uip_ds6_addr *root_if;
   static struct etimer periodic;
-  static struct etimer myclock;
+  // static struct etimer myclock;
 
   PROCESS_BEGIN();
 
@@ -314,7 +314,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
                       NULL, UDP_PORT, receiver);
 
   etimer_set(&periodic, periodo*CLOCK_SECOND);
-  etimer_set(&myclock, 2*CLOCK_SECOND);
+  // etimer_set(&myclock, 2*CLOCK_SECOND);
 
   static int resposta = 0;
   while(1) {
@@ -340,12 +340,14 @@ PROCESS_THREAD(udp_server_process, ev, data)
       //PRINTF("Initiaing global repair\n");
       //rpl_repair_root(RPL_DEFAULT_INSTANCE);
       alerta_emergencia();
-    } else if(etimer_expired(&myclock)) {
-      etimer_reset(&myclock);
-
-      internal_clock = internal_clock + 2;
-
-    } else if(etimer_expired(&periodic)) {
+    }
+    // else if(etimer_expired(&myclock)) {
+    //   etimer_reset(&myclock);
+    //
+    //   internal_clock = internal_clock + 2;
+    //
+    // }
+    else if(etimer_expired(&periodic)) {
       etimer_reset(&periodic);
 
       int k;

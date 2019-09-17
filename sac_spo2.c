@@ -233,14 +233,14 @@ send_packet(void *ptr)
 
   sd = sqrt(somatorio / i);
 
-  // PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
+  PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
   // if(ultima_leitura == tamanho_janela){
   //   PRINTF("Janela cheia!");
   // }
 
   novo_elemento = coleta();
 
-  // PRINTF("Novo elemento: %d\n", novo_elemento);
+  PRINTF("Novo elemento: %d\n", novo_elemento);
 
     if(tamanho_janela - 1 == ultima_leitura){
         // PRINTF("Buffer cheio. Testando anomalia...\n");
