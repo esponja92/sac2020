@@ -1,0 +1,391 @@
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  4
+Da observacao  0  ate a observacao  60
+Tamanhos dos datasets relativos aos fenomenos observados:
+17
+2
+1
+40
+índice de correlação entre os picos  1  e  2 : 0.117647058824
+índice de correlação entre os picos  1  e  3 : 0.0588235294118
+índice de correlação entre os picos  1  e  4 : 0.65
+índice de correlação entre os picos  2  e  3 : 0.5
+índice de correlação entre os picos  2  e  4 : 0.55
+índice de correlação entre os picos  3  e  4 : 0.65
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['16.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['17.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['16.0']
+---
+['17.0']
+!!!!!!!!!! Suspeita de anomalia em:
+inicio =  0
+fim =  60
+anomalia encontrada entre  0  e  60
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  1
+Da observacao  60  ate a observacao  120
+1  fenomeno(s) observados! Considerado normal!
+inicio =  60
+fim =  120
+nenhuma anomalia entre  60  e  120
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  120  ate a observacao  180
+Tamanhos dos datasets relativos aos fenomenos observados:
+37
+23
+índice de correlação entre os picos  1  e  2 : 0.351351351351
+!!!!!!!!!! Suspeita de anomalia em:
+['20.0', '19.0', '21.0', '24.0', '22.0', '23.0', '18.0']
+---
+['25.0', '33.0', '35.0', '30.0', '27.0', '31.0', '32.0', '29.0', '26.0']
+!!!!!!!!!! Suspeita de anomalia em:
+inicio =  120
+fim =  180
+anomalia encontrada entre  120  e  180
+-- errou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  1
+Da observacao  180  ate a observacao  240
+1  fenomeno(s) observados! Considerado normal!
+inicio =  180
+fim =  240
+nenhuma anomalia entre  180  e  240
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  240  ate a observacao  300
+Tamanhos dos datasets relativos aos fenomenos observados:
+39
+21
+índice de correlação entre os picos  1  e  2 : 0.333333333333
+!!!!!!!!!! Suspeita de anomalia em:
+['20.0', '19.0', '21.0', '23.0', '22.0', '17.0', '16.0', '18.0']
+---
+['25.0', '45.0', '33.0', '44.0', '30.0', '24.0', '43.0', '31.0', '42.0', '46.0', '29.0', '26.0']
+!!!!!!!!!! Suspeita de anomalia em:
+inicio =  240
+fim =  300
+anomalia encontrada entre  240  e  300
+-- errou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  1
+Da observacao  300  ate a observacao  360
+1  fenomeno(s) observados! Considerado normal!
+inicio =  300
+fim =  360
+nenhuma anomalia entre  300  e  360
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  360  ate a observacao  420
+Tamanhos dos datasets relativos aos fenomenos observados:
+33
+27
+índice de correlação entre os picos  1  e  2 : 0.575757575758
+inicio =  360
+fim =  420
+nenhuma anomalia entre  360  e  420
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  1
+Da observacao  420  ate a observacao  480
+1  fenomeno(s) observados! Considerado normal!
+inicio =  420
+fim =  480
+nenhuma anomalia entre  420  e  480
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  1
+Da observacao  480  ate a observacao  540
+1  fenomeno(s) observados! Considerado normal!
+inicio =  480
+fim =  540
+nenhuma anomalia entre  480  e  540
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  1
+Da observacao  540  ate a observacao  600
+1  fenomeno(s) observados! Considerado normal!
+inicio =  540
+fim =  600
+nenhuma anomalia entre  540  e  600
+-- acertou!
+---------------------------------------------------------
+Rodada:  11 , Num. picos:  1
+Da observacao  600  ate a observacao  660
+1  fenomeno(s) observados! Considerado normal!
+inicio =  600
+fim =  660
+nenhuma anomalia entre  600  e  660
+-- acertou!
+---------------------------------------------------------
+Rodada:  12 , Num. picos:  1
+Da observacao  660  ate a observacao  720
+1  fenomeno(s) observados! Considerado normal!
+inicio =  660
+fim =  720
+nenhuma anomalia entre  660  e  720
+-- acertou!
+---------------------------------------------------------
+Rodada:  13 , Num. picos:  1
+Da observacao  720  ate a observacao  780
+1  fenomeno(s) observados! Considerado normal!
+inicio =  720
+fim =  780
+nenhuma anomalia entre  720  e  780
+-- acertou!
+---------------------------------------------------------
+Rodada:  14 , Num. picos:  2
+Da observacao  780  ate a observacao  840
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 0.666666666667
+inicio =  780
+fim =  840
+nenhuma anomalia entre  780  e  840
+-- acertou!
+---------------------------------------------------------
+Rodada:  15 , Num. picos:  1
+Da observacao  840  ate a observacao  900
+1  fenomeno(s) observados! Considerado normal!
+inicio =  840
+fim =  900
+nenhuma anomalia entre  840  e  900
+-- acertou!
+---------------------------------------------------------
+Rodada:  16 , Num. picos:  1
+Da observacao  900  ate a observacao  960
+1  fenomeno(s) observados! Considerado normal!
+inicio =  900
+fim =  960
+nenhuma anomalia entre  900  e  960
+-- acertou!
+---------------------------------------------------------
+Rodada:  17 , Num. picos:  1
+Da observacao  960  ate a observacao  1020
+1  fenomeno(s) observados! Considerado normal!
+inicio =  960
+fim =  1020
+nenhuma anomalia entre  960  e  1020
+-- acertou!
+---------------------------------------------------------
+Rodada:  18 , Num. picos:  1
+Da observacao  1020  ate a observacao  1080
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1020
+fim =  1080
+nenhuma anomalia entre  1020  e  1080
+-- acertou!
+---------------------------------------------------------
+Rodada:  19 , Num. picos:  1
+Da observacao  1080  ate a observacao  1140
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1080
+fim =  1140
+nenhuma anomalia entre  1080  e  1140
+-- acertou!
+---------------------------------------------------------
+Rodada:  20 , Num. picos:  1
+Da observacao  1140  ate a observacao  1200
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1140
+fim =  1200
+nenhuma anomalia entre  1140  e  1200
+-- acertou!
+---------------------------------------------------------
+Rodada:  21 , Num. picos:  1
+Da observacao  1200  ate a observacao  1260
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1200
+fim =  1260
+nenhuma anomalia entre  1200  e  1260
+-- acertou!
+---------------------------------------------------------
+Rodada:  22 , Num. picos:  1
+Da observacao  1260  ate a observacao  1320
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1260
+fim =  1320
+nenhuma anomalia entre  1260  e  1320
+-- acertou!
+---------------------------------------------------------
+Rodada:  23 , Num. picos:  6
+Da observacao  1320  ate a observacao  1380
+Tamanhos dos datasets relativos aos fenomenos observados:
+34
+6
+15
+1
+1
+3
+índice de correlação entre os picos  1  e  2 : 0.176470588235
+índice de correlação entre os picos  1  e  3 : 0.411764705882
+índice de correlação entre os picos  1  e  4 : 0.0294117647059
+índice de correlação entre os picos  1  e  5 : 0.0294117647059
+índice de correlação entre os picos  1  e  6 : 0.0882352941176
+índice de correlação entre os picos  2  e  3 : 0.933333333333
+índice de correlação entre os picos  2  e  4 : 0.166666666667
+índice de correlação entre os picos  2  e  5 : 0.166666666667
+índice de correlação entre os picos  2  e  6 : 0.5
+índice de correlação entre os picos  3  e  4 : 0.0666666666667
+índice de correlação entre os picos  3  e  5 : 0.0666666666667
+índice de correlação entre os picos  3  e  6 : 0.2
+índice de correlação entre os picos  4  e  5 : 1.0
+índice de correlação entre os picos  4  e  6 : 1.0
+índice de correlação entre os picos  5  e  6 : 1.0
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['2.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['33.0', '35.0', '30.0', '34.0', '31.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['39.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['45.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0']
+---
+['53.0', '50.0', '52.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['2.0']
+---
+['39.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['2.0']
+---
+['45.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['2.0']
+---
+['53.0', '50.0', '52.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['35.0', '30.0', '33.0', '31.0', '34.0']
+---
+['39.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['35.0', '30.0', '33.0', '31.0', '34.0']
+---
+['45.0']
+!!!!!!!!!! Suspeita de anomalia em:
+!!!!!!!!!! Suspeita de anomalia em:
+['35.0', '30.0', '33.0', '31.0', '34.0']
+---
+['53.0', '50.0', '52.0']
+!!!!!!!!!! Suspeita de anomalia em:
+inicio =  1320
+fim =  1380
+anomalia encontrada entre  1320  e  1380
+-- acertou!
+---------------------------------------------------------
+Rodada:  24 , Num. picos:  1
+Da observacao  1380  ate a observacao  1440
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1380
+fim =  1440
+nenhuma anomalia entre  1380  e  1440
+-- acertou!
+---------------------------------------------------------
+Rodada:  25 , Num. picos:  2
+Da observacao  1440  ate a observacao  1500
+Tamanhos dos datasets relativos aos fenomenos observados:
+38
+22
+índice de correlação entre os picos  1  e  2 : 0.368421052632
+!!!!!!!!!! Suspeita de anomalia em:
+['0.0', '2.0']
+---
+['35.0', '29.0', '48.0', '27.0', '44.0', '52.0', '34.0', '36.0', '53.0']
+!!!!!!!!!! Suspeita de anomalia em:
+inicio =  1440
+fim =  1500
+anomalia encontrada entre  1440  e  1500
+-- errou!
+---------------------------------------------------------
+Rodada:  26 , Num. picos:  2
+Da observacao  1500  ate a observacao  1560
+Tamanhos dos datasets relativos aos fenomenos observados:
+32
+28
+índice de correlação entre os picos  1  e  2 : 0.5625
+inicio =  1500
+fim =  1560
+nenhuma anomalia entre  1500  e  1560
+-- errou!
+---------------------------------------------------------
+Rodada:  27 , Num. picos:  1
+Da observacao  1560  ate a observacao  1620
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1560
+fim =  1620
+nenhuma anomalia entre  1560  e  1620
+-- acertou!
+---------------------------------------------------------
+Rodada:  28 , Num. picos:  1
+Da observacao  1620  ate a observacao  1680
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1620
+fim =  1680
+nenhuma anomalia entre  1620  e  1680
+-- acertou!
+---------------------------------------------------------
+Rodada:  29 , Num. picos:  1
+Da observacao  1680  ate a observacao  1740
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1680
+fim =  1740
+nenhuma anomalia entre  1680  e  1740
+-- acertou!
+---------------------------------------------------------
+Rodada:  30 , Num. picos:  1
+Da observacao  1740  ate a observacao  1800
+1  fenomeno(s) observados! Considerado normal!
+inicio =  1740
+fim =  1800
+nenhuma anomalia entre  1740  e  1800
+-- acertou!
+acertos: 26
+verdadeiros positivos: 2
+verdadeiros negativos: 24
+falsos positivos: 3
+falsos negativos: 1
+rodadas: 30
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  1 :  86.6666666667 %
+FW em  60  e threshold em  0.5
+=============================
+media de acuracia: 86.6666666667 %
+desvio padrao da acuracia 0.0 %
+media de precisao: 66.6666666667 %
+desvio padrao da precisao 0.0 %
+media de recall: 40.0 %
+desvio padrao da recall 0.0 %
+tempo medio para cada rodada: 60.9347415686  segundos
+desvio padrao do tempo: 0.569700381993  segundos

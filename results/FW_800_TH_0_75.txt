@@ -1,0 +1,11 @@
+FW em 800, threshold em 75%
+=============================
+media de acuracia: 20.3333333333 %
+desvio padrao da acuracia 11.3968806649 %
+media de precisao: 77.7777777778 %
+desvio padrao da precisao 39.7523196 %
+media de recall: 18.2407407407 %
+desvio padrao da recall 11.7326908962 %
+tempo medio para cada rodada: 827.372381061  segundos
+desvio padrao do tempo: 12.3414175886  segundos
+

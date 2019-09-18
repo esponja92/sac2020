@@ -1,0 +1,1075 @@
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  1235  ate a observacao  1295
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1235  e  1295
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  1295  ate a observacao  1355
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1295  e  1355
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  1355  ate a observacao  1415
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1355  e  1415
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  1415  ate a observacao  1475
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1415  e  1475
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  1475  ate a observacao  1535
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1475  e  1535
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  1535  ate a observacao  1595
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1535  e  1595
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  1595  ate a observacao  1655
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1595  e  1655
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  1655  ate a observacao  1715
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1655  e  1715
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  1715  ate a observacao  1775
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1715  e  1775
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  1775  ate a observacao  1835
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1775  e  1835
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  0 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  1326  ate a observacao  1386
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1326  e  1386
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  1386  ate a observacao  1446
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1386  e  1446
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  1446  ate a observacao  1506
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1446  e  1506
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  1506  ate a observacao  1566
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1506  e  1566
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  1566  ate a observacao  1626
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1566  e  1626
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  1626  ate a observacao  1686
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1626  e  1686
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  1686  ate a observacao  1746
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1686  e  1746
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  1746  ate a observacao  1806
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1746  e  1806
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  1806  ate a observacao  1866
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1806  e  1866
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  1866  ate a observacao  1926
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1866  e  1926
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  1 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  3288  ate a observacao  3348
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3288  e  3348
+-- errou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  3348  ate a observacao  3408
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3348  e  3408
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  3408  ate a observacao  3468
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3408  e  3468
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  3468  ate a observacao  3528
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3468  e  3528
+-- errou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  3528  ate a observacao  3588
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3528  e  3588
+-- errou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  3588  ate a observacao  3648
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3588  e  3648
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  3648  ate a observacao  3708
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3648  e  3708
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  3708  ate a observacao  3768
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3708  e  3768
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  3768  ate a observacao  3828
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3768  e  3828
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  3828  ate a observacao  3888
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3828  e  3888
+-- acertou!
+acertos: 7
+verdadeiros positivos: 0
+verdadeiros negativos: 7
+falsos positivos: 0
+falsos negativos: 3
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  2 :  70.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  1564  ate a observacao  1624
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1564  e  1624
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  1624  ate a observacao  1684
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1624  e  1684
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  1684  ate a observacao  1744
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1684  e  1744
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  1744  ate a observacao  1804
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1744  e  1804
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  1804  ate a observacao  1864
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1804  e  1864
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  1864  ate a observacao  1924
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1864  e  1924
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  1924  ate a observacao  1984
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1924  e  1984
+-- errou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  1984  ate a observacao  2044
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1984  e  2044
+-- errou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  2044  ate a observacao  2104
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2044  e  2104
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  2104  ate a observacao  2164
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2104  e  2164
+-- acertou!
+acertos: 8
+verdadeiros positivos: 0
+verdadeiros negativos: 8
+falsos positivos: 0
+falsos negativos: 2
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  3 :  80.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  3262  ate a observacao  3322
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3262  e  3322
+-- errou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  3322  ate a observacao  3382
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3322  e  3382
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  3382  ate a observacao  3442
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3382  e  3442
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  3442  ate a observacao  3502
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3442  e  3502
+-- errou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  3502  ate a observacao  3562
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3502  e  3562
+-- errou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  3562  ate a observacao  3622
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3562  e  3622
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  3622  ate a observacao  3682
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3622  e  3682
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  3682  ate a observacao  3742
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3682  e  3742
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  3742  ate a observacao  3802
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3742  e  3802
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  3802  ate a observacao  3862
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  3802  e  3862
+-- acertou!
+acertos: 7
+verdadeiros positivos: 0
+verdadeiros negativos: 7
+falsos positivos: 0
+falsos negativos: 3
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  4 :  70.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  2400  ate a observacao  2460
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2400  e  2460
+-- errou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  2460  ate a observacao  2520
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2460  e  2520
+-- errou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  2520  ate a observacao  2580
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2520  e  2580
+-- errou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  2580  ate a observacao  2640
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2580  e  2640
+-- errou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  2640  ate a observacao  2700
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2640  e  2700
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  2700  ate a observacao  2760
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2700  e  2760
+-- errou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  2760  ate a observacao  2820
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2760  e  2820
+-- errou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  2820  ate a observacao  2880
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2820  e  2880
+-- errou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  2880  ate a observacao  2940
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2880  e  2940
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  2940  ate a observacao  3000
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2940  e  3000
+-- acertou!
+acertos: 3
+verdadeiros positivos: 0
+verdadeiros negativos: 3
+falsos positivos: 0
+falsos negativos: 7
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  5 :  30.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  1128  ate a observacao  1188
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1128  e  1188
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  1188  ate a observacao  1248
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1188  e  1248
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  1248  ate a observacao  1308
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1248  e  1308
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  1308  ate a observacao  1368
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1308  e  1368
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  1368  ate a observacao  1428
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1368  e  1428
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  1428  ate a observacao  1488
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1428  e  1488
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  1488  ate a observacao  1548
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1488  e  1548
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  1548  ate a observacao  1608
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1548  e  1608
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  1608  ate a observacao  1668
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1608  e  1668
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  1668  ate a observacao  1728
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1668  e  1728
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  6 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  4045  ate a observacao  4105
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4045  e  4105
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  4105  ate a observacao  4165
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4105  e  4165
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  4165  ate a observacao  4225
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4165  e  4225
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  4225  ate a observacao  4285
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4225  e  4285
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  4285  ate a observacao  4345
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4285  e  4345
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  4345  ate a observacao  4405
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4345  e  4405
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  4405  ate a observacao  4465
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4405  e  4465
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  4465  ate a observacao  4525
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4465  e  4525
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  4525  ate a observacao  4585
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4525  e  4585
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  4585  ate a observacao  4645
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4585  e  4645
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  7 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  1339  ate a observacao  1399
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1339  e  1399
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  1399  ate a observacao  1459
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1399  e  1459
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  1459  ate a observacao  1519
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1459  e  1519
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  1519  ate a observacao  1579
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1519  e  1579
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  1579  ate a observacao  1639
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1579  e  1639
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  1639  ate a observacao  1699
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1639  e  1699
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  1699  ate a observacao  1759
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1699  e  1759
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  1759  ate a observacao  1819
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1759  e  1819
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  1819  ate a observacao  1879
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1819  e  1879
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  1879  ate a observacao  1939
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  1879  e  1939
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  8 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  4523  ate a observacao  4583
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4523  e  4583
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  4583  ate a observacao  4643
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4583  e  4643
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  4643  ate a observacao  4703
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4643  e  4703
+-- acertou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  4703  ate a observacao  4763
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4703  e  4763
+-- acertou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  4763  ate a observacao  4823
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4763  e  4823
+-- acertou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  4823  ate a observacao  4883
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4823  e  4883
+-- acertou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  4883  ate a observacao  4943
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4883  e  4943
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  4943  ate a observacao  5003
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  4943  e  5003
+-- acertou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  5003  ate a observacao  5063
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  5003  e  5063
+-- acertou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  5063  ate a observacao  5123
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  5063  e  5123
+-- acertou!
+acertos: 10
+verdadeiros positivos: 0
+verdadeiros negativos: 10
+falsos positivos: 0
+falsos negativos: 0
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  9 :  100.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  2244  ate a observacao  2304
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2244  e  2304
+-- acertou!
+---------------------------------------------------------
+Rodada:  2 , Num. picos:  2
+Da observacao  2304  ate a observacao  2364
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2304  e  2364
+-- acertou!
+---------------------------------------------------------
+Rodada:  3 , Num. picos:  2
+Da observacao  2364  ate a observacao  2424
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2364  e  2424
+-- errou!
+---------------------------------------------------------
+Rodada:  4 , Num. picos:  2
+Da observacao  2424  ate a observacao  2484
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2424  e  2484
+-- errou!
+---------------------------------------------------------
+Rodada:  5 , Num. picos:  2
+Da observacao  2484  ate a observacao  2544
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2484  e  2544
+-- errou!
+---------------------------------------------------------
+Rodada:  6 , Num. picos:  2
+Da observacao  2544  ate a observacao  2604
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2544  e  2604
+-- errou!
+---------------------------------------------------------
+Rodada:  7 , Num. picos:  2
+Da observacao  2604  ate a observacao  2664
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2604  e  2664
+-- acertou!
+---------------------------------------------------------
+Rodada:  8 , Num. picos:  2
+Da observacao  2664  ate a observacao  2724
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2664  e  2724
+-- errou!
+---------------------------------------------------------
+Rodada:  9 , Num. picos:  2
+Da observacao  2724  ate a observacao  2784
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2724  e  2784
+-- errou!
+---------------------------------------------------------
+Rodada:  10 , Num. picos:  2
+Da observacao  2784  ate a observacao  2844
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2784  e  2844
+-- errou!
+acertos: 3
+verdadeiros positivos: 0
+verdadeiros negativos: 3
+falsos positivos: 0
+falsos negativos: 7
+rodadas: 10
+Elapsed time (seconds):  ---------------------------------------percentual de acuracia na passada  10 :  30.0 %
+---------------------------------------------------------
+Rodada:  1 , Num. picos:  2
+Da observacao  2944  ate a observacao  3004
+Tamanhos dos datasets relativos aos fenomenos observados:
+30
+30
+índice de correlação entre os picos  1  e  2 : 1.0
+tudo normal entre  2944  e  3004

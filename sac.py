@@ -66,7 +66,7 @@ def hr(hr):
 
 def ews(paciente = getPaciente()):
     EWS = []
-    n = randint(0,len(paciente))
+    n = randint(0,len(paciente) - NUM_LEITURAS - 1)
     leituras_hr = [int(i) for i in getParametroPaciente(paciente,"'HR'")[n:-1]]
     leituras_resp = [int(i) for i in getParametroPaciente(paciente,"'RESP'")[n:-1]]
     leituras_spo2 = [int(i) for i in getParametroPaciente(paciente,"'SpO2'")[n:-1]]
@@ -77,22 +77,22 @@ def ews(paciente = getPaciente()):
         e = e + spo2(leituras_spo2[i])
         EWS.append(e)
 
-    if(7 in EWS):
-        inicio = max(0, EWS.index(7)-200)
-        fim = min(len(EWS), inicio+NUM_LEITURAS)
-        return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    if(8 in EWS):
-        inicio = max(0, EWS.index(8)-200)
-        fim = min(len(EWS), inicio+NUM_LEITURAS)
-        return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    if(9 in EWS):
-        inicio = max(0, EWS.index(9)-200)
-        fim = min(len(EWS), inicio+NUM_LEITURAS)
-        return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    else:
-        inicio = n
-        fim = min(len(EWS), inicio+NUM_LEITURAS)
-        return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
+    # if(7 in EWS):
+    #     inicio = max(0, EWS.index(7)-200)
+    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
+    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
+    # if(8 in EWS):
+    #     inicio = max(0, EWS.index(8)-200)
+    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
+    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
+    # if(9 in EWS):
+    #     inicio = max(0, EWS.index(9)-200)
+    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
+    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
+    # else:
+    inicio = n
+    fim = min(len(EWS), inicio+NUM_LEITURAS)
+    return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
 
 def consumption(ev, c, v, rtimer, runtime):
     return (ev * c * v) / (rtimer * runtime)

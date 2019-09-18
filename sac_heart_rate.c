@@ -253,7 +253,7 @@ send_packet(void *ptr)
 
     if(tamanho_janela - 1 == ultima_leitura){
         //PRINTF("Buffer cheio. Testando anomalia...\n");
-        if(( novo_elemento > media + 3 * sd ) || (novo_elemento < media - 3 * sd)){
+        if(( novo_elemento > media + 3* sd ) || (novo_elemento < media - 3* sd)){
 
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;

@@ -84,6 +84,8 @@ static int periodo = 13;
 
 static int fim = 13;
 
+static int num_suspeitas_emergencia = 0;
+
 static int TP = 0;
 static int TN = 0;
 static int FP = 0;
@@ -119,6 +121,7 @@ static void alerta_emergencia(){
 
     //PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
     suspeita_em_andamento = 1;
+    num_suspeitas_emergencia++;
     uip_create_linklocal_allnodes_mcast(&addr_bc);
     simple_udp_sendto(&connection, "EMERGENCIA", 10, &addr_bc);
 
@@ -400,7 +403,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
       }
       aconteceu_emergencia = 0;
       resposta = 0;
-      PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n",TP,TN,FP,FN);
+      PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n/ Suspeitas %d\n/",TP,TN,FP,FN,num_suspeitas_emergencia);
 
       internal_clock = inicio;
     }
