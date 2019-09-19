@@ -87,24 +87,19 @@ def geraDadosExperimento(tam):
     '''
     Primeiro criterio: a amostra deve ter tamanho definido na variavel tam
     '''
-    while(len(ews1['ews']) != tam):
-        print "Primeiro criterio"
-        ews1 = ews(p1,tam)
 
     '''
     Segundo criterio: nao pode comecar com uma crise
     '''
-    pontos_ews1 = ews1['ews']
-    while(7 in pontos_ews1[0:10]):
-        print "Segundo criterio"
-        ews1 = ews(p1,tam)
-        pontos_ews1 = ews1['ews']
 
     '''
     Terceiro criterio: deve ter pelo menos uma crise
     '''
-    while(7 not in pontos_ews1):
-        print "Terceiro criterio"
+
+    pontos_ews1 = ews1['ews']
+    while((len(ews1['ews']) != tam) or
+    (7 in pontos_ews1[0:10]) or (8 in pontos_ews1[0:10]) or (9 in pontos_ews1[0:10]) or
+    (7 not in pontos_ews1[0:100]) or (8 not in pontos_ews1[0:100]) or (9 not in pontos_ews1[0:100])):
         ews1 = ews(p1,tam)
         pontos_ews1 = ews1['ews']
 

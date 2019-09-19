@@ -1,6 +1,6 @@
 from sac import *
 
-ews1 = geraDadosExperimento(100)
+ews1 = geraDadosExperimento(400)
 path = '/home/hugo/contiki/examples/ipv6/rpl-udp'
 
 f = open(path + "/consts.h","w")
