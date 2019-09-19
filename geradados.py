@@ -1,7 +1,13 @@
+import os
+import glob
 from sac import *
 
 ews1 = geraDadosExperimento(400)
 path = '/home/hugo/contiki/examples/ipv6/rpl-udp'
+
+files = glob.glob(path + '/*.z1')
+for f in files:
+    os.remove(f)
 
 f = open(path + "/consts.h","w")
 f.write("struct _mensagem {\n")
