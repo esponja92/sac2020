@@ -24,7 +24,7 @@ idle_listen = 144       [15]
 import matplotlib.pyplot as plt
 from utils import *
 
-NUM_LEITURAS = 400
+# tam = 400
 from random import randint
 
 def resp(r):
@@ -64,9 +64,9 @@ def hr(hr):
     if(hr >= 131):
         return 3
 
-def ews(paciente = getPaciente()):
+def ews(paciente = getPaciente(), tam = 400):
     EWS = []
-    n = randint(0,len(paciente) - NUM_LEITURAS - 1)
+    n = randint(0,len(paciente) - tam - 1)
     leituras_hr = [int(i) for i in getParametroPaciente(paciente,"'HR'")[n:-1]]
     leituras_resp = [int(i) for i in getParametroPaciente(paciente,"'RESP'")[n:-1]]
     leituras_spo2 = [int(i) for i in getParametroPaciente(paciente,"'SpO2'")[n:-1]]
@@ -76,23 +76,39 @@ def ews(paciente = getPaciente()):
         e = e + resp(leituras_resp[i])
         e = e + spo2(leituras_spo2[i])
         EWS.append(e)
-
-    # if(7 in EWS):
-    #     inicio = max(0, EWS.index(7)-200)
-    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
-    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    # if(8 in EWS):
-    #     inicio = max(0, EWS.index(8)-200)
-    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
-    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    # if(9 in EWS):
-    #     inicio = max(0, EWS.index(9)-200)
-    #     fim = min(len(EWS), inicio+NUM_LEITURAS)
-    #     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
-    # else:
     inicio = n
-    fim = min(len(EWS), inicio+NUM_LEITURAS)
+    fim = min(len(EWS), inicio+tam)
     return {'ews':EWS[inicio:fim],'hr':leituras_hr[inicio:fim],'resp':leituras_resp[inicio:fim],'spo2':leituras_spo2[inicio:fim]}
+
+def geraDadosExperimento(tam):
+    p1 = csvParaLista(PACIENTE_1)
+    ews1 = ews(p1,tam)
+
+    '''
+    Primeiro criterio: a amostra deve ter tamanho definido na variavel tam
+    '''
+    while(len(ews1['ews']) != tam):
+        print "Primeiro criterio"
+        ews1 = ews(p1,tam)
+
+    '''
+    Segundo criterio: nao pode comecar com uma crise
+    '''
+    pontos_ews1 = ews1['ews']
+    while(7 in pontos_ews1[0:10]):
+        print "Segundo criterio"
+        ews1 = ews(p1,tam)
+        pontos_ews1 = ews1['ews']
+
+    '''
+    Terceiro criterio: deve ter pelo menos uma crise
+    '''
+    while(7 not in pontos_ews1):
+        print "Terceiro criterio"
+        ews1 = ews(p1,tam)
+        pontos_ews1 = ews1['ews']
+
+    return ews1
 
 def consumption(ev, c, v, rtimer, runtime):
     return (ev * c * v) / (rtimer * runtime)

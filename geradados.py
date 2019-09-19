@@ -1,7 +1,6 @@
 from sac import *
 
-p1 = csvParaLista(PACIENTE_1)
-ews1 = ews(p1)
+ews1 = geraDadosExperimento(100)
 path = '/home/hugo/contiki/examples/ipv6/rpl-udp'
 
 f = open(path + "/consts.h","w")
