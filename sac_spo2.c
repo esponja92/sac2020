@@ -68,7 +68,7 @@
 #define SEND_TIME		(random_rand() % (SEND_INTERVAL))
 #define MAX_PAYLOAD_LEN		30
 
-#define tamanho_janela 5
+#define tamanho_janela 10
 
 #define UDP_PORT 1234
 #define SERVICE_ID 190

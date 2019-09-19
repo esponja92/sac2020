@@ -77,12 +77,13 @@ static int leitura = -1;
 static int internal_clock = 0;
 
 static int aconteceu_emergencia = 0;
+static int aconteceu_emergencia_antes = 0;
 
 static int inicio = 0;
 
-static int periodo = 13;
+static int periodo = 15;
 
-static int fim = 13;
+static int fim = 15;
 
 static int num_suspeitas_emergencia = 0;
 
@@ -383,22 +384,32 @@ PROCESS_THREAD(udp_server_process, ev, data)
 
       if(resposta == 1){
         if(aconteceu_emergencia){
-          // PRINTF("TP\n");
+          PRINTF("TP\n");
           TP++;
+          aconteceu_emergencia_antes = 1;
         }
         else{
-            // PRINTF("FN\n");
+          if(!aconteceu_emergencia_antes){
+            PRINTF("FN\n");
             FN++;
+          }
+          else{
+            PRINTF("DEU FN MAS FOI DESCONTADO");
+            // aconteceu_emergencia_antes = 0;
+          }
         }
       }
       else{
         if(aconteceu_emergencia){
-          // PRINTF("FP\n");
+          PRINTF("FP\n");
           FP++;
         }
         else{
-            // PRINTF("TN\n");
+            PRINTF("TN\n");
             TN++;
+            if(aconteceu_emergencia_antes){
+              aconteceu_emergencia_antes = 0;
+            }
         }
       }
       aconteceu_emergencia = 0;
@@ -406,6 +417,9 @@ PROCESS_THREAD(udp_server_process, ev, data)
       PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n/ Suspeitas %d\n/",TP,TN,FP,FN,num_suspeitas_emergencia);
 
       internal_clock = inicio;
+      if(TP + TN + FP + FN == 10){
+        PRINTF("========================================================================================================================\n");
+      }
     }
   }
 
