@@ -146,7 +146,7 @@ receiver(struct simple_udp_connection *c,
   else{
     static int ultima_leitura_fusor;
     ultima_leitura_fusor = atoi(str);
-    // PRINTF(" ======= %s\n",str);
+    PRINTF(" ======= %s\n",str);
     if(ultima_leitura_fusor > leitura_resp){
       leitura_resp = ultima_leitura_fusor;
     }
@@ -179,13 +179,28 @@ static void insere(int e){
     }
 }
 /*---------------------------------------------------------------------------*/
-static float sqrt(float number){
-    float temp = 0;
-    float s = number / 2;
+static int sqrt(int number){
+    //PROBLEMAS DE PRECISAO!!!!
+    if(number < 0){
+      // PRINTF("Problemas de precisão\n");
+      return 0;
+    }
+
+    int temp = 0;
+    int s = number / 2;
+    int tentativas = 0;
 
     while(s != temp){
+        // PRINTF("%d, %d\n",s,temp);
+        //PROBLEMAS DE CONVERGENCIA!!!!
+        if(tentativas == 10){
+          // PRINTF("Problemas de convergência\n");
+          // s = 0;
+          break;
+        }
         temp = s;
         s = (number/temp + temp) / 2;
+        tentativas++;
     }
 
     return s;
@@ -218,7 +233,7 @@ send_packet(void *ptr)
   static int i;
   // static int total = 0;
   static int media = 0;
-  static int somatorio = 0;
+  static int unsigned somatorio = 0;
   static int sd = 0;
   static int novo_elemento;
 
@@ -232,9 +247,10 @@ send_packet(void *ptr)
   sd = 0;
   somatorio = 0;
   for(i = 0; i < tamanho_janela; i++){
-      somatorio = somatorio + powerto(leituras[i] - media);
+    // PRINTF("%d -> %d\n",(leituras[i] - media), (leituras[i] - media)*(leituras[i] - media));
+      somatorio = somatorio + (leituras[i] - media)*(leituras[i] - media);
   }
-
+  // PRINTF ("%d -> %d\n",(somatorio / i), sqrt(somatorio / i));
   sd = sqrt(somatorio / i);
 
   PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
