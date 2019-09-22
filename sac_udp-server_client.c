@@ -120,7 +120,7 @@ static void alerta_emergencia(){
 
     uip_ipaddr_t addr_bc;
 
-    //PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
+    // PRINTF("Suspeita de emergência detectada! Enviando broadcast\n");
     suspeita_em_andamento = 1;
     num_suspeitas_emergencia++;
     uip_create_linklocal_allnodes_mcast(&addr_bc);
@@ -163,7 +163,7 @@ static void calcula_score(mensagem *m){
     if(buffer_cheio()){
         total = 0;
         for(i = 0; i < num_sensores; i++){
-            //PRINTF(" scores[%d] = %d\n",i,scores[i]);
+            // PRINTF(" scores[%d] = %d\n",i,scores[i]);
             total = total + scores[i];
         }
 
@@ -394,8 +394,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
             FN++;
           // }
           // else{
-          //   PRINTF("DEU FN MAS FOI DESCONTADO");
-          //   aconteceu_emergencia_antes = 0;
+          //   PRINTF("DEU FN MAS FOI DESCONTADO\n");
           // }
         }
       }
@@ -407,9 +406,7 @@ PROCESS_THREAD(udp_server_process, ev, data)
         else{
             PRINTF("TN\n");
             TN++;
-            // if(aconteceu_emergencia_antes){
-            //   aconteceu_emergencia_antes = 0;
-            // }
+            // aconteceu_emergencia_antes = 0;
         }
       }
       aconteceu_emergencia = 0;
@@ -417,7 +414,8 @@ PROCESS_THREAD(udp_server_process, ev, data)
       PRINTF("TP: %d/ TN: %d/ FP: %d/ FN %d\n/ Suspeitas %d\n/",TP,TN,FP,FN,num_suspeitas_emergencia);
 
       internal_clock = inicio;
-      if(TP + TN + FP + FN == 10){
+      // if(TP + TN + FP + FN == 30){
+      if(fim >= 451){
         PRINTF("========================================================================================================================\n");
         PRINTF("========================================================================================================================\n");
         PRINTF("========================================================================================================================\n");

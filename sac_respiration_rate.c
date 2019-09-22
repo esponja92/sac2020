@@ -79,6 +79,7 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
+static int emergencia = 0;
 
 static int leitura_resp = -1;
 
@@ -135,7 +136,7 @@ receiver(struct simple_udp_connection *c,
 
     int ews = EWS();
 
-    PRINTF("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_resp);
+    // PRINTF("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_resp);
     mensagem *m = (mensagem *)uip_appdata;
     strcpy(m->label,"ews");
     m->valor = ews;
@@ -146,7 +147,7 @@ receiver(struct simple_udp_connection *c,
   else{
     static int ultima_leitura_fusor;
     ultima_leitura_fusor = atoi(str);
-    PRINTF(" ======= %s\n",str);
+    // PRINTF(" ======= %s\n",str);
     if(ultima_leitura_fusor > leitura_resp){
       leitura_resp = ultima_leitura_fusor;
     }
@@ -233,7 +234,7 @@ send_packet(void *ptr)
   static int i;
   // static int total = 0;
   static int media = 0;
-  static int unsigned somatorio = 0;
+  static unsigned int somatorio = 0;
   static int sd = 0;
   static int novo_elemento;
 
@@ -260,16 +261,30 @@ send_packet(void *ptr)
   leitura_resp++;
   novo_elemento = resp[leitura_resp];
 
-  PRINTF("Novo elemento: %d\n", novo_elemento);
+  // PRINTF("Novo elemento: %d\n", novo_elemento);
 
     if(tamanho_janela - 1 == ultima_leitura){
         // PRINTF("Buffer cheio. Testando anomalia...\n");
-        if(( novo_elemento > media + 3* sd ) || (novo_elemento < media - 3* sd)){
+        if(( novo_elemento > media +  3*sd ) || (novo_elemento < media -  3*sd)){
 
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
           m->valor = leitura_resp;
+          emergencia = 1;
+
+          // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n", server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
+
+
+          uip_udp_packet_sendto(client_conn, m, sizeof(mensagem),
+                                &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+        }
+        else if(emergencia == 1){
+          mensagem *m = (mensagem *)uip_appdata;
+          strcpy(m->label,"suspeita");
+          m->valor = leitura_resp;
+          emergencia = 0;
+          // PRINTF("acusei emergencia por causa do momento anterior");
 
           // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n", server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
 

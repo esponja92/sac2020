@@ -79,7 +79,7 @@ static uip_ipaddr_t server_ipaddr;
 
 static int leituras[tamanho_janela];
 static int ultima_leitura = 0;
-//static int emergencia = 0;
+static int emergencia = 0;
 
 static int leitura_hr = -1;
 
@@ -139,7 +139,7 @@ receiver(struct simple_udp_connection *c,
 
     int ews = EWS();
 
-    PRINTF("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_hr);
+    // PRINTF("EMERGÊNCIA! ENVIANDO EWS %d da LEITURA MAIS RECENTE: %d\n", ews, leitura_mais_recente);
     mensagem *m = (mensagem *)uip_appdata;
     strcpy(m->label,"ews");
     m->valor = ews;
@@ -150,7 +150,7 @@ receiver(struct simple_udp_connection *c,
   else{
     static int ultima_leitura_fusor;
     ultima_leitura_fusor = atoi(str);
-    PRINTF(" ======= %s\n",str);
+    // PRINTF(" ======= %s\n",str);
     if(ultima_leitura_fusor > leitura_hr){
       leitura_hr = ultima_leitura_fusor;
     }
@@ -184,6 +184,7 @@ static void insere(int e){
 }
 /*---------------------------------------------------------------------------*/
 static int sqrt(int number){
+  // PRINTF("chegando %d\n",number);
     //PROBLEMAS DE PRECISAO!!!!
     if(number < 0){
       // PRINTF("Problemas de precisão\n");
@@ -206,7 +207,7 @@ static int sqrt(int number){
         s = (number/temp + temp) / 2;
         tentativas++;
     }
-
+    // PRINTF("retornando %d\n",s);
     return s;
 }
 /*---------------------------------------------------------------------------*/
@@ -237,7 +238,7 @@ send_packet(void *ptr)
   static int i;
 
   static int media = 0;
-  static int unsigned somatorio = 0;
+  static unsigned int somatorio = 0;
   static int sd = 0;
   static int novo_elemento;
 
@@ -251,32 +252,45 @@ send_packet(void *ptr)
   sd = 0;
   somatorio = 0;
   for(i = 0; i < tamanho_janela; i++){
-    // PRINTF("%d -> %d\n",(leituras[i] - media), (leituras[i] - media)*(leituras[i] - media));
-    // PRINTF("%d, %d, %d\n",somatorio, (leituras[i] - media)*(leituras[i] - media), somatorio + (leituras[i] - media)*(leituras[i] - media));
-    // PRINTF("%d\n",sizeof(int));
       somatorio = somatorio + (leituras[i] - media)*(leituras[i] - media);
+
   }
-  // PRINTF ("%d, %d, %d\n",somatorio, i, (somatorio / i));
   sd = sqrt(somatorio / i);
 
   PRINTF("Media: %d e Desvio Padrao: %d\n", media, sd);
-  //if(ultima_leitura == tamanho_janela){
-    //PRINTF("Janela cheia!");
-  //}
 
   leitura_hr++;
   novo_elemento = hr[leitura_hr];
 
-  // PRINTF("Novo elemento: %d\n", novo_elemento);
+  PRINTF("Novo elemento: %d\n", novo_elemento);
 
     if(tamanho_janela - 1 == ultima_leitura){
         //PRINTF("Buffer cheio. Testando anomalia...\n");
-        if(( novo_elemento > media + 3* sd ) || (novo_elemento < media - 3* sd)){
+        if(( novo_elemento > media +  3*sd ) || (novo_elemento < media -  3*sd)){
 
           // sprintf(buf, "%d", novo_elemento);
           mensagem *m = (mensagem *)uip_appdata;
           strcpy(m->label,"suspeita");
           m->valor = leitura_hr;
+          emergencia = 1;
+
+          // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n", server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
+          // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA : '%s'\n", m->label);
+
+
+          uip_udp_packet_sendto(client_conn, m, sizeof(mensagem), &server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));
+        }
+        //AQUI DARIA NEGATIVE
+        else if(emergencia == 1){
+          // sprintf(buf, "%d", novo_elemento);
+          mensagem *m = (mensagem *)uip_appdata;
+          strcpy(m->label,"suspeita");
+          m->valor = leitura_hr;
+
+          //PRECISO DESLIGAR A FLAG DE ALGUM JEITO
+          emergencia = 0;
+          // PRINTF("acusei emergencia por causa do momento anterior");
+          // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA : '%s'\n", m->label);
 
           // PRINTF("SUSPEITA DE EMERGÊNCIA! COLETA ENVIADA PARA %d : '%s'\n", server_ipaddr.u8[sizeof(server_ipaddr.u8) - 1], m->label);
 
